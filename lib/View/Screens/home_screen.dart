@@ -81,21 +81,21 @@ class HomeScreen extends StatelessWidget {
                       topRight: Radius.circular(20),
                     ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const CustomHeader(text: 'Near you'),
-                      const SizedBox(height: 5),
-                      Text(
-                        '${courtModelListNotifier.value.length} Places near you',
-                        style: const TextStyle(fontSize: 12),
-                      ),
-                      Expanded(
-                        child: ValueListenableBuilder(
-                            valueListenable: courtModelListNotifier,
-                            builder: (BuildContext context,
-                                List<CourtModel> courtList, _) {
-                              return ListView.builder(
+                  child: ValueListenableBuilder(
+                      valueListenable: courtModelListNotifier,
+                      builder: (BuildContext context,
+                          List<CourtModel> courtList, _) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const CustomHeader(text: 'Near you'),
+                            const SizedBox(height: 5),
+                            Text(
+                              '${courtModelListNotifier.value.length} Places near you',
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                            Expanded(
+                              child: ListView.builder(
                                 itemCount: courtList.length,
                                 itemBuilder: (context, index) {
                                   var _courtModel = courtList[index];
@@ -104,11 +104,11 @@ class HomeScreen extends StatelessWidget {
                                     description: _courtModel.description,
                                   );
                                 },
-                              );
-                            }),
-                      ),
-                    ],
-                  ),
+                              ),
+                            ),
+                          ],
+                        );
+                      }),
                 ),
                 Container(
                   height: 40,
