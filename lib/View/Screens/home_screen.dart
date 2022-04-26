@@ -86,9 +86,9 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       const CustomHeader(text: 'Near you'),
                       const SizedBox(height: 5),
-                      const Text(
-                        '7 Places near you',
-                        style: TextStyle(fontSize: 12),
+                      Text(
+                        '${courtModelListNotifier.value.length} Places near you',
+                        style: const TextStyle(fontSize: 12),
                       ),
                       Expanded(
                         child: ValueListenableBuilder(
